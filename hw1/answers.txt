@@ -1,0 +1,36 @@
+Name: Yuen Han Chan
+1)
+register number	|	name	|	use				|	Callee	Saved?
+		0		|	$zero	|	Always zero		|		NA			
+		1		|	$at		|	Reserved for 	|		NA		
+				|			|	the Assember	|		no		
+		2		|	$v0		|	Return Value	|		no													
+		3		|	$a0		|	Argument 1		|		no												
+		4		|   $a1		|	Argument 2		|		no
+		5		|	$a2		|	Argument 3		|		no												
+		6		|	$t0		| Temporary Variable|		no												
+		7		|	$t1		| Temporary Variable|		no										
+		8		|	$t2		| Temporary Variable|		no						
+		9		|	$s0		|	Saved Register	|		yes
+		10		|	$s1     |	Saved Register	|		yes
+		11		|	$s2		|	Saved Register	|		yes
+		12		|	$k0		|Reserved for OS	|		NA
+							|	 & Traps		|		
+		13		|	$sp		|	Stack Pointer 	|		no
+		14		|	$fp		|	Frame Pointer	|		yes
+		15		|	$ra		|	Return Address	|		no
+
+2)
+The stack grow from high address to low address, the stack pointer always point to
+the lowest address on the stack (the top of the stack) while frame pointer always 
+point to the first local variable, or the first parameter if no local variable exist,
+of the current frame stack.  Value on the stack are retrieved mostly by using the 
+offset location according to the frame pointer and are mostly push to the stack by 
+decrement the stack pointer and push to where the stack pointer is currently pointing.
+
+3)
+Before the caller call, parameter is being push to the stack and any saved register, if used,
+are saved prior to the call.  Call can be execute either by loading the address of the function
+into the register then jump, or use beq directly to do condition jump.  At the end, callee will
+restore previous stored value back into register if any were saved prior the call being made.  And
+load the return address back to the PC to continue the execution of function before caller called callee.

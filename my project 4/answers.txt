@@ -1,0 +1,52 @@
+CS 2200 Fall 2014
+Project 4
+Name: Yuen Han Chan
+GT Number: 902983019
+
+Problem 1B
+----------
+1: total execution time = 67.6s
+2: total execution time = 36.2s
+4: total execution time = 33.1s
+
+There is not exactly a linear relationship between the number of CPUs and total execution time, but a relationship does exist.  As the number of CPUs go up, the total execution time goes down, but in an exponential instead of linear fashion.  This is due to a majority of the time, the simulator does not run more than two threads in parallel.  As a result, most of the CPU’s time is spend idle waiting for threads to run when more than 2 CPUs is use.  Which also explain why the total execution time when using 4 CPUs do not show a significant in decrease of total execution time in compare to when only 2 CPUs are used.
+ 
+Problem 2B
+----------
+
+800ms: # of Context Switches: 136
+Total execution time: 67.6 s
+Total time spent in READY state: 325.4 s
+
+600ms: # of Context Switches: 161
+Total execution time: 67.6 s
+Total time spent in READY state: 314.5 s
+
+400ms: # of Context Switches: 203
+Total execution time: 67.6 s
+Total time spent in READY state: 298.8 s
+
+200ms: # of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+total time decrease as time slices decrease.  However, the shortest time slice possible is usually not the best choice since the number of cache misses would increase, and the context switch overhead would defeats the benefits of round robin.
+
+Problem 3B
+----------
+
+using 200ms:
+
+FIFO: # of Context Switches: 99
+Total execution time: 67.6 s
+Total time spent in READY state: 389.9 s
+
+Round Robin: # of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+Static Priority: # of Context Switches: 168
+Total execution time: 68.8 s
+Total time spent in READY state: 137.1 s
+
+the static priority is the closest approximation of SJF, since SJF and static priority both preempt running processes base on different type of priority.  Where SJF use the lengths to schedule the process with the shortest time, static priority schedule the process with the highest priority. 
